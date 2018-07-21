@@ -1,0 +1,2 @@
+# selemiun_python
+seleniumを用いてpythonでyoutubeの動画のURLを取得する
