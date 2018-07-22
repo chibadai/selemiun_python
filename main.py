@@ -1,13 +1,26 @@
-import sys
-sys.path.append("./own_module")
-# import OutputText_sample
+import sys, os
+sys.path.append(os.getcwd() + "/own_module")
 from own_module import OutputText
+from own_module import Selenium
+
+youtubeMovieUrl = "https://www.youtube.com/user/mentalistdaigo/videos?sort=dd&view=0&shelf_id=8"
+chromeDriverPath = os.getcwd() + '/own_module/chromedriver.exe'
+youtubeDlPath = os.getcwd() + '/own_module/youtube-dl.exe'
 
 def main():
-    OutputFileName = 'test.txt'
-    testArray = ['1', '2', '3', '4', '5']
-    # sample()
-    OutputText.outputText(OutputFileName, testArray)
+    youtubeWatchArray = Selenium.getYoutubeMovieUrl(chromeDriverPath, youtubeMovieUrl)
+    OutputFileName = 'youtubeWatchUrl.txt'
+    OutputText.outputText(OutputFileName, youtubeWatchArray)
+    for i in range(0, len(youtubeWatchArray)):
+        try:
+            cmd = youtubeDlPath + ' ' + youtubeWatchArray[i]
+            os.system(cmd)
+            break
+        except:
+            print('youtube download error')
+
+
+    print('end')
 
 if __name__ == '__main__':
     main()
