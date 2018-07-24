@@ -1,3 +1,4 @@
+# coding: cp932
 from time import sleep
 from selenium import webdriver
 
@@ -28,7 +29,10 @@ def getYoutubeMovieUrl(chromeDriverPath, youtubeMovieUrl):
 
 	youtubeWatchArray = []
 	for youtubeWatchHTML in driver.find_elements_by_tag_name("ytd-grid-video-renderer"):
-		youtubeWatchArray.append(youtubeWatchHTML.find_elements_by_css_selector('a')[0].get_attribute('href'))
+		try:
+			youtubeWatchArray.append(youtubeWatchHTML.find_elements_by_css_selector('a')[0].get_attribute('href'))
+		except:
+			print('youtubeWatchHTML error')
 
 	driver.close()
 	return youtubeWatchArray

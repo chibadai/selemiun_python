@@ -1,3 +1,5 @@
+# coding: cp932
+
 def outputText(outputFileName, outputText):
     f = open(outputFileName, 'w')
     try:
