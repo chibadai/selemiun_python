@@ -26,6 +26,7 @@ def getYoutubeMovieUrl(chromeDriverPath, youtubeMovieUrl):
 		if tagNumCounter > 10:
 			break
 		sleep(sleepTime)
+		break
 
 	youtubeWatchArray = []
 	for youtubeWatchHTML in driver.find_elements_by_tag_name("ytd-grid-video-renderer"):
